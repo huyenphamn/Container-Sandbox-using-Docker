@@ -57,3 +57,23 @@ Test: tests/test-file-spam.sh
 Execution Time: 1 seconds
 Test: uploaded_scripts/hello.sh
 Execution Time: 0 seconds
+Test: uploaded_scripts/hello.sh
+Execution Time: 0 seconds
+Test: uploaded_scripts/infinite-loop-test.sh
+Execution Time: 16 seconds
+Test: uploaded_scripts/infinite-loop-test.sh
+Execution Time: 15 seconds
+Test: uploaded_scripts/infinite-loop-test.sh
+Execution Time: 15 seconds
+Test: uploaded_scripts/infinite-loop-test.sh
+Execution Time: 15 seconds
+Test: uploaded_scripts/infinite-loop-test.sh
+Execution Time: 16 seconds
+Test: uploaded_scripts/infinite-loop-test.sh
+Execution Time: 15 seconds
+Test: uploaded_scripts/infinite-loop-test.sh
+Execution Time: 15 seconds
+Test: uploaded_scripts/read-only-test.sh
+Execution Time: 0 seconds
+Test: tests/infinite-loop-test.sh
+Execution Time: 15 seconds

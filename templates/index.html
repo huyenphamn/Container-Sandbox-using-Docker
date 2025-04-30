@@ -105,18 +105,18 @@
 </head>
 <body>
   <div class="container">
-    <h1>Run a Script in the Sandbox</h1>
+    <h1>Sandbox Container</h1>
 
     <form id="sandbox-form" method="post" enctype="multipart/form-data">
-      <!-- Upload Your Script -->
-      <label for="upload-script">Upload Your Script:</label>
+      <!-- Upload Your Own Test Cases -->
+      <label for="upload-script">Upload Your Test:</label>
       <input type="file" name="script" id="upload-script" title="Upload a Bash script to run in the sandbox">
 
       <button type="button" onclick="submitForm('upload')" aria-label="Run uploaded script">Run Uploaded Script</button>
 
       <hr>
 
-      <!-- Select Predefined Script -->
+      <!-- Select Predefined Test Cases -->
       <label for="selected_script">Choose a Predefined Test:</label>
       <select name="selected_script" id="selected_script" title="Select a predefined test script">
         {% for script in predefined %}
