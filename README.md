@@ -35,8 +35,8 @@ Containers offer an easy way to isolate the processes, limiting their running en
 1. Clone the repository
 2. Set up the environment
     - Make sure to have Docker installed and running in your machine. Visit the [Docker Starter Page](https://www.docker.com/get-started/) for installation intruction.
-    - Make sure to have Python3 and pip installed. Please check out [Geeksforgeeks]{https://www.geeksforgeeks.org/download-and-install-python-3-latest-version/} and [Python Packaging User Guide]{https://packaging.python.org/en/latest/tutorials/installing-packages/} for installation. 
-    - Make sure to install [Flask]{https://flask.palletsprojects.com/en/stable/installation/}
+    - Make sure to have Python3 and pip installed. Please check out [Geeksforgeeks](https://www.geeksforgeeks.org/download-and-install-python-3-latest-version/) and [Python Packaging User Guide](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installation. 
+    - Make sure to install [Flask](https://flask.palletsprojects.com/en/stable/installation/)
 
 ## Usage
 
