@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandbox Runner</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        /* Main container */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form styling */
+        form {
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="file"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            display: inline-block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Output Styling */
+        #output {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Run a Script in the Sandbox</h1>
+
+    <form id="sandbox-form" method="post" enctype="multipart/form-data">
+      <!-- Upload Your Script -->
+      <label for="upload-script">Upload Your Script:</label>
+      <input type="file" name="script" id="upload-script" title="Upload a Bash script to run in the sandbox">
+
+      <button type="button" onclick="submitForm('upload')" aria-label="Run uploaded script">Run Uploaded Script</button>
+
+      <hr>
+
+      <!-- Select Predefined Script -->
+      <label for="selected_script">Choose a Predefined Test:</label>
+      <select name="selected_script" id="selected_script" title="Select a predefined test script">
+        {% for script in predefined %}
+          <option value="{{ script }}">{{ script }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="button" onclick="submitForm('predefined')" aria-label="Run selected test script">Run Selected Script</button>
+    </form>
+
+    <h3>Sandbox Output:</h3>
+    <pre id="output" aria-live="polite"></pre>
+  </div>
+
+  <script>
+    function submitForm(sourceType) {
+      const form = document.getElementById('sandbox-form');
+      const formData = new FormData(form);
+      formData.append('source', sourceType);
+
+      fetch('/run', {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.text())  // Handling plain text response
+      .then(data => {
+        document.getElementById('output').textContent = data;
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        document.getElementById('output').textContent = `Error: ${error.message}`;
+      });
+    }
+  </script>
+</body>
+</html>
